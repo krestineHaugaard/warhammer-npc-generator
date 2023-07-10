@@ -1,6 +1,7 @@
 <script>
   export let data;
   import { minimal } from "../stores/settings";
+  let health = data.W;
 </script>
 
 <article class="NPC">
@@ -56,6 +57,11 @@
       {/each}
     </ul>
   </div>
+  <div class="health">
+    <button on:click={() => (health = health - 1)}>-</button>
+    <div>{health}</div>
+    <button on:click={() => (health = health + 1)}>+</button>
+  </div>
 </article>
 
 <style>
@@ -64,7 +70,16 @@
     border: 1px solid rgba(255, 255, 255, 0.87);
     border-radius: 0.5rem;
   }
-
+  .health {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .health div {
+    width: 20px;
+    text-align: center;
+  }
   h2 {
     font-size: 1.1rem;
   }
