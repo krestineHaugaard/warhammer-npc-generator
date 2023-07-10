@@ -1,1 +1,40 @@
-export const levels = ["noob", "rookie", "average", "veteran", "champion"];
+export const levels = ["Normal", "Champion", "Minor Hero", "Major Hero"];
+
+export const upgrades = [
+  {},
+  {
+    WS: 10,
+    BS: 10,
+    I: 10,
+    S: 1,
+    T: 1,
+  },
+  {
+    WS: 20,
+    BS: 20,
+    S: 1,
+    T: 1,
+    W: 4,
+    I: 20,
+    A: 1,
+    Dex: 10,
+    Ld: 10,
+    Int: 10,
+    Cl: 10,
+    WP: 10,
+  },
+  {
+    WS: 30,
+    BS: 30,
+    S: 1,
+    T: 1,
+    W: 8,
+    I: 30,
+    A: 2,
+    Dex: 20,
+    Ld: 20,
+    Int: 20,
+    Cl: 20,
+    WP: 20,
+  },
+];

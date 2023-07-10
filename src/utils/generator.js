@@ -14,7 +14,7 @@ import {
 } from "../assets/equipment";
 import { maxSilver, weaponChances } from "../assets/settings";
 import { names } from "../assets/names";
-import { levels } from "../assets/levels";
+import { levels, upgrades } from "../assets/levels";
 
 function getStat(base, stat) {
   switch (stat) {
@@ -29,7 +29,6 @@ function getStat(base, stat) {
     case "WP":
       let min10 = base.stats[stat] - 11;
       return parseRoll("2D10+" + min10);
-      break;
     case "A":
       if (base.stats[stat] === 1) {
         return base.stats[stat];
@@ -42,12 +41,9 @@ function getStat(base, stat) {
       } else {
         return base.stats[stat] - 1;
       }
-
-      break;
     default:
-      let min6 = base.stats[stat] - 2;
+      let min6 = base.stats[stat] - 1;
       return parseRoll("1D3+" + min6);
-      break;
   }
 }
 export function generateCharacter(race, level) {
@@ -73,32 +69,19 @@ export function generateCharacter(race, level) {
     WP: getStat(base, "WP"),
     WS: getStat(base, "WS"),
   };
-  //TODO: se evt side 214 i stedet
-  for (let i = 0; i < level; i++) {
-    switch (getRandomInt(0, 6)) {
-      case 0:
-        character.A += 1;
-        break;
-      case 1:
-        character.BS += 10;
-        break;
-      case 2:
-        character.M += 1;
-        break;
-      case 3:
-        character.S += 1;
-        break;
-      case 4:
-        character.T += 1;
-        break;
-      case 5:
-        character.W += 2;
-        break;
-      case 6:
-        character.WS += 10;
-        break;
-    }
-  }
+  const extras = upgrades[level];
+  character.WS += extras?.WS || 0;
+  character.BS += extras?.BS || 0;
+  character.S += extras?.S || 0;
+  character.T += extras?.T || 0;
+  character.W += extras?.W || 0;
+  character.I += extras?.I || 0;
+  character.A += extras?.A || 0;
+  character.Dex += extras?.Dex || 0;
+  character.Ld += extras?.Ld || 0;
+  character.Int += extras?.Int || 0;
+  character.Cl += extras?.Cl || 0;
+  character.WP += extras?.WP || 0;
   return character;
 }
 
