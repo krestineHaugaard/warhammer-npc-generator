@@ -80,30 +80,3 @@ button:focus-visible {
   gap: 1rem;
   margin-top: 1rem;
 }
-.NPC {
-  padding: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.87);
-  border-radius: 0.5rem;
-}
-table td {
-  text-align: start;
-  margin: 0;
-}
-
-table td:last-child {
-  text-align: end;
-  padding-inline-start: 0.5rem;
-}
-table tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.87);
-  color: #242424;
-}
-.NPC .info {
-  display: flex;
-  gap: 0.5rem;
-  align-content: flex-start;
-}
-.NPC .info h3 {
-  margin: 0;
-  padding: 0;
-}

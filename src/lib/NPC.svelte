@@ -5,92 +5,107 @@
 
 <article class="NPC">
   <h2>{data.name} the {data.levelString} {data.race}</h2>
-  <div class="info">
-    <table cellspacing="0">
+
+  <table cellspacing="0">
+    <thead>
       <tr>
-        <td>M</td>
+        <th>M</th>
+        <th>WS</th>
+        <th>BS</th>
+        <th>S</th>
+        <th>T</th>
+        <th>W</th>
+        <th>I</th>
+        <th>A</th>
+        {#if !$minimal}
+          <th>Dex</th>
+          <th>Ld</th>
+          <th>Int</th>
+          <th>Cl</th>
+          <th>WP</th>
+          <th>Fel</th>
+        {/if}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td>{data.M}</td>
-      </tr><tr>
-        <td>WS</td>
         <td>{data.WS}</td>
-      </tr><tr>
-        <td>BS</td>
         <td>{data.BS}</td>
-      </tr><tr>
-        <td>S</td>
         <td>{data.S}</td>
-      </tr>
-      <tr>
-        <td>T</td>
         <td>{data.T}</td>
-      </tr>
-      <tr>
-        <td>W</td>
         <td>{data.W}</td>
-      </tr>
-      <tr>
-        <td>I</td>
         <td>{data.I}</td>
-      </tr>
-      <tr>
-        <td>A</td>
         <td>{data.A}</td>
-      </tr>
-      {#if !$minimal}
-        <tr>
-          <td>T</td>
-          <td>{data.T}</td>
-        </tr>
-        <tr>
-          <td>Dex</td>
+        {#if !$minimal}
           <td>{data.Dex}</td>
-        </tr>
-        <tr>
-          <td>Ld</td>
           <td>{data.Ld}</td>
-        </tr>
-        <tr>
-          <td>Int</td>
           <td>{data.Int}</td>
-        </tr>
-        <tr>
-          <td>Cl</td>
           <td>{data.Cl}</td>
-        </tr>
-        <tr>
-          <td>WP</td>
           <td>{data.WP}</td>
-        </tr>
-        <tr>
-          <td>Fel</td>
           <td>{data.Fel}</td>
-        </tr>
-      {/if}
-    </table>
-    <div class="equipment">
-      <h3>Equipment</h3>
-      <ul>
-        {#each data.equipment as stuff}
-          <li>{stuff}</li>
-        {/each}
-      </ul>
-    </div>
+        {/if}
+      </tr>
+    </tbody>
+  </table>
+  <div class="equipment">
+    <h3>Equipment</h3>
+    <ul>
+      {#each data.equipment as stuff}
+        <li>{stuff}</li>
+      {/each}
+    </ul>
   </div>
 </article>
 
-<!--
-M: "1D3+2",
-WS: "2D10+20",
-BS: "2D10+20",
-S: "1D3+1",
-T: "1D3+1",
-W: "1D3+4",
-I: "2D10+20",
-A: "1",
-Dex: "2D10+20",
-Ld: "2D10+20",
-Int: "2D10+20",
-Cl: "2D10+20",
-WP: "2D10+20",
-Fel: "2D10+20",
--->
+<style>
+  .NPC {
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.87);
+    border-radius: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  h2,
+  h3 {
+    text-align: center;
+  }
+  table td {
+    text-align: start;
+    margin: 0;
+  }
+
+  table tbody td {
+    text-align: end;
+    padding-inline-start: 0.5rem;
+  }
+
+  td,
+  th {
+    padding: 0.5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.87);
+  }
+  /* table td:nth-child(odd),
+  table th:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.87);
+    color: #242424;
+  } */
+
+  table {
+    border: 1px solid rgba(255, 255, 255, 0.87);
+    margin: auto;
+  }
+  thead tr {
+    background-color: rgba(255, 255, 255, 0.87);
+    color: #242424;
+  }
+  .NPC .info h3 {
+    margin: 0;
+    padding: 0;
+  }
+</style>
