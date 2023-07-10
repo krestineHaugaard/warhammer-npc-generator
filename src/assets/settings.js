@@ -4,4 +4,5 @@ export const weaponChances = {
   chanceForTwoHanded: 0.2,
   chanceForTwoItems: 0.4,
   chanceForItemTwoBeingAShield: 0.5,
+  chanceForRanged: 0.1,
 };

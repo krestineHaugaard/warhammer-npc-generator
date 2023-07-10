@@ -4,6 +4,7 @@
   import { party } from "../stores/party";
   import { level, minimal } from "../stores/settings";
   import { levels } from "../assets/levels";
+  import Button from "./Button.svelte";
   let open = false;
 </script>
 
@@ -12,7 +13,7 @@
     Minimal:
     <input type="checkbox" bind:checked={$minimal} name="essential" />
   </label>
-  <button on:click={party.reset}>Clear</button>
+  <Button size="small" inverse on:click={party.reset}>Clear</Button>
   <select bind:value={$level}>
     {#each levels as lvl, index}
       <option value={index}>{lvl}</option>
@@ -20,14 +21,16 @@
   </select>
   <hr />
   {#each races as race}
-    <button
+    <Button
       on:click={(e) => {
         party.addToParty(race.race, $level);
-      }}>{capitalize(race.race)}</button
+      }}>{capitalize(race.race)}</Button
     >
   {/each}
 </nav>
-<button class="burger" on:click={(e) => (open = !open)}>🍔</button>
+<div class="burger">
+  <Button on:click={(e) => (open = !open)}>🍔</Button>
+</div>
 
 <style>
   .burger {
@@ -48,11 +51,11 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: calc(100vw - 70px);
+    width: calc(100vw);
     background-color: var(--bg);
     transform: translateY(-1000px);
     transition: all 0.5s;
-    border-bottom: 1px solid var(--color);
+    border-bottom: 1px solid var(--primary);
   }
   .open {
     transform: translateY(0px);

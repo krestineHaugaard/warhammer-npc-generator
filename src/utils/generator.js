@@ -6,12 +6,7 @@ import {
   getRandomInt,
 } from "./utils";
 
-import {
-  twoHanded,
-  oneHandedPrimary,
-  oneHandedSecondary,
-  specialistWeapons,
-} from "../assets/equipment";
+import weapons from "../assets/equipment";
 import { maxSilver, weaponChances } from "../assets/settings";
 import { names } from "../assets/names";
 import { levels, upgrades } from "../assets/levels";
@@ -53,7 +48,7 @@ export function generateCharacter(race, level) {
     name: getRandomName(),
     race: capitalize(race),
     levelString: capitalize(translateLevel(level)),
-    equipment: getEquipment(),
+    equipment: getEquipment(level),
     A: getStat(base, "A"),
     BS: getStat(base, "BS"),
     Cl: getStat(base, "Cl"),
@@ -85,24 +80,27 @@ export function generateCharacter(race, level) {
   return character;
 }
 
-function getEquipment() {
+function getEquipment(lvl) {
   let equipment = [];
+  if (Math.random() < weaponChances.chanceForRanged) {
+    equipment.push(getRandomFromArray(weapons.ranged));
+  }
   const rnd = Math.random();
   if (rnd < weaponChances.chanceForSpecialistWeapon) {
-    equipment.push(getRandomFromArray(specialistWeapons));
+    equipment.push(getRandomFromArray(weapons.specialistWeapons));
   } else if (rnd < weaponChances.chanceForTwoHanded) {
-    equipment.push(getRandomFromArray(twoHanded));
+    equipment.push(getRandomFromArray(weapons.twoHanded));
   } else {
-    equipment.push(getRandomFromArray(oneHandedPrimary));
+    equipment.push(getRandomFromArray(weapons.oneHandedPrimary));
     if (rnd < weaponChances.chanceForTwoItems) {
       if (Math.random() < weaponChances.chanceForItemTwoBeingAShield) {
         equipment.push("Shield");
       } else {
-        equipment.push(getRandomFromArray(oneHandedSecondary));
+        equipment.push(getRandomFromArray(weapons.oneHandedSecondary));
       }
     }
   }
-  equipment.push(getRandomInt(0, maxSilver) + " silver");
+  equipment.push(getRandomInt(0, maxSilver * (lvl + 1)) + " silver");
   return equipment;
 }
 export const getRandomName = () =>

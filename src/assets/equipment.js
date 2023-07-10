@@ -1,4 +1,4 @@
-export const twoHanded = [
+const twoHanded = [
   "Flail",
   "Halberd",
   "Horseman axe",
@@ -12,7 +12,7 @@ export const twoHanded = [
   "2H Warhammer",
 ];
 
-export const oneHandedPrimary = [
+const oneHandedPrimary = [
   "Cutlass",
   "Dagger",
   "Hand axe",
@@ -25,18 +25,31 @@ export const oneHandedPrimary = [
   "Wooden Club",
 ];
 
-export const specialistWeapons = [
+const specialistWeapons = [
   "Foil",
   "Garotte",
   "Hand and a half sword",
   "Knuckle dusters",
-  "Net",
   "Whip",
 ];
 
-export const oneHandedSecondary = [
+const oneHandedSecondary = [
   "Buckler",
   "Hook",
   "Sword breaker",
   ...oneHandedPrimary,
 ];
+
+const ranged = ["Net", "Sling", "Bola", "Longbow"];
+
+const armor = []; //TODO:
+
+const weapons = {
+  twoHanded,
+  oneHandedPrimary,
+  specialistWeapons,
+  oneHandedSecondary,
+  ranged,
+  armor,
+};
+export default weapons;
