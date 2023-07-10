@@ -11,10 +11,10 @@ import {
   oneHandedPrimary,
   oneHandedSecondary,
   specialistWeapons,
-} from "./equipment";
-import { maxSilver, weaponChances } from "./settings";
-import { names, levels } from "./names";
-import { parse } from "svelte/compiler";
+} from "../assets/equipment";
+import { maxSilver, weaponChances } from "../assets/settings";
+import { names } from "../assets/names";
+import { levels } from "../assets/levels";
 
 function getStat(base, stat) {
   switch (stat) {

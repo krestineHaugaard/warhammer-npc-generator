@@ -1,40 +1,27 @@
-export const races = [
-  {
-    race: "chaos beastman",
-    stats: {
-      M: 4,
-      WS: 41,
-      BS: 25,
-      S: 3,
-      T: 4,
-      W: 11,
-      I: 30,
-      A: 1,
-      Dex: 30,
-      Ld: 29,
-      Int: 24,
-      Cl: 29,
-      WP: 24,
-      Fel: 10,
-    },
-  },
-  {
-    race: "dwarf",
-    stats: {
-      M: 3,
-      WS: 41,
-      BS: 25,
-      S: 3,
-      T: 4,
-      W: 7,
-      I: 20,
-      A: 1,
-      Dex: 24,
-      Ld: 66,
-      Int: 29,
-      Cl: 66,
-      WP: 66,
-      Fel: 24,
-    },
-  },
-];
+import creatures from "../assets/creatures.csv?raw";
+export const races = getRaces();
+function getRaces() {
+  return creatures.split("\n").map((creature) => {
+    const [race, M, WS, BS, S, T, W, I, A, Dex, Ld, Int, Cl, WP, Fel] =
+      creature.split(",");
+    return {
+      race,
+      stats: {
+        M: parseInt(M),
+        WS: parseInt(WS),
+        BS: parseInt(BS),
+        S: parseInt(S),
+        T: parseInt(T),
+        W: parseInt(W),
+        I: parseInt(I),
+        A: parseInt(A),
+        Dex: parseInt(Dex),
+        Ld: parseInt(Ld),
+        Int: parseInt(Int),
+        Cl: parseInt(Cl),
+        WP: parseInt(WP),
+        Fel: parseInt(Fel),
+      },
+    };
+  });
+}

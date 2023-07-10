@@ -3,7 +3,7 @@
   import { capitalize } from "../utils/utils";
   import { party } from "../stores/party";
   import { level, minimal } from "../stores/settings";
-  import { levels } from "../utils/names";
+  import { levels } from "../assets/levels";
 </script>
 
 <nav>
