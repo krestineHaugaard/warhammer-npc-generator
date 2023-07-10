@@ -18,6 +18,7 @@
       <option value={index}>{lvl}</option>
     {/each}
   </select>
+  <hr />
   {#each races as race}
     <button
       on:click={(e) => {
@@ -34,6 +35,10 @@
     right: 1rem;
     top: 1rem;
     z-index: 100;
+    width: 50px;
+  }
+  hr {
+    width: 100%;
   }
   nav {
     display: flex;
@@ -41,10 +46,13 @@
     gap: 0.5rem;
     align-items: center;
     position: fixed;
-    background-color: #242424;
+    left: 0;
+    top: 0;
+    width: calc(100vw - 70px);
+    background-color: var(--bg);
     transform: translateY(-1000px);
     transition: all 0.5s;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.87);
+    border-bottom: 1px solid var(--color);
   }
   .open {
     transform: translateY(0px);
