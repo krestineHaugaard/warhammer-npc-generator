@@ -45,6 +45,7 @@ export function generateCharacter(race, level) {
   const base = races.find((el) => el.race === race);
 
   const character = {
+    id: crypto.randomUUID(),
     name: getRandomName(),
     race: capitalize(race),
     levelString: capitalize(translateLevel(level)),
@@ -77,6 +78,7 @@ export function generateCharacter(race, level) {
   character.Int += extras?.Int || 0;
   character.Cl += extras?.Cl || 0;
   character.WP += extras?.WP || 0;
+  character.health = character.W;
   return character;
 }
 

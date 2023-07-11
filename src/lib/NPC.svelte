@@ -1,12 +1,20 @@
 <script>
   export let data;
   import { minimal } from "../stores/settings";
-  let health = data.W;
+  import { party } from "../stores/party";
+  import Button from "./Button.svelte";
 </script>
 
 <article class="NPC">
-  <h2>{data.name} the {data.levelString} {data.race}</h2>
-
+  <div class="name">
+    <div class="title">
+      <h2>{data.name}</h2>
+      <h3 class="secondary">{data.levelString} {data.race}</h3>
+    </div>
+    <Button size="small" on:click={() => party.removeFromParty(data.id)}
+      >✖︎</Button
+    >
+  </div>
   <table cellspacing="0">
     <thead>
       <tr>
@@ -58,17 +66,28 @@
     </ul>
   </div>
   <div class="health">
-    <button on:click={() => (health = health - 1)}>-</button>
-    <div>{health}</div>
-    <button on:click={() => (health = health + 1)}>+</button>
+    <Button inverse on:click={() => party.decreaseHealth(data.id)}>-</Button>
+    <div>{data.health}</div>
+    <Button inverse on:click={() => party.increaseHealth(data.id)}>+</Button>
   </div>
 </article>
 
 <style>
   .NPC {
     padding: 0.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.87);
+    border: 1px solid var(--primary);
     border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .title {
+    flex: 2;
   }
   .health {
     display: flex;
@@ -89,6 +108,11 @@
   h2,
   h3 {
     text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  h3.secondary {
+    color: rgba(170, 168, 168, 0.87);
   }
   table td {
     text-align: start;
