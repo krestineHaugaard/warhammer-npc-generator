@@ -65,6 +65,7 @@
       {/each}
     </ul>
   </div>
+  <h3>Health</h3>
   <div class="health">
     <Button inverse on:click={() => party.decreaseHealth(data.id)}>-</Button>
     <div>{data.health}</div>
